@@ -1,0 +1,15 @@
+<h1>Booking List</h1>
+<a [routerLink]="['/hotel-list']"><button>Back</button></a>
+<button (click)="refresh()">Refresh</button>
+<hr>
+<div>
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="noBookings">No bookings...<hr></div>
+    <div *ngFor="let booking of bookings">
+        <p>Hotel Name: {{this.getHotelName(booking.hotel_id)}}</p>
+        <p>Booking Made: {{booking.booking_date}}</p>
+        <p>Booking Start Date: {{booking.booking_start}}</p>
+        <p>Booking End Date: {{booking.booking_end}}</p>
+        <hr>
+    </div>
+</div>

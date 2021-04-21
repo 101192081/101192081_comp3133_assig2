@@ -1,1 +1,31 @@
-<p>hotel-list works!</p>
+<h1>Hotel List</h1>
+<button (click)="refresh()">Refresh</button><br>
+<button (click)="logout()">Log out</button>
+<a [routerLink]="['/booking-list']"><button>View Bookings</button></a>
+<br>
+<div>
+    <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
+        <select name="searchType" id="searchType" required ngModel>
+            <option value="Name" selected>Name</option>
+            <option value="City">City</option>
+        </select>
+        <input type="text" name="search" id="search" placeholder="Search..." required ngModel>
+        <button type="submit">Search</button>
+        <button (click)="getAllHotels()">Clear</button>
+    </form>
+</div>
+<hr>
+<div>
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="noHotels">No hotels...<hr></div>
+    <div *ngFor="let hotel of hotels">
+        <p>Hotel Name: {{hotel.hotel_name}}</p>
+        <p>City: {{hotel.city}}</p>
+        <p>Street: {{hotel.street}}</p>
+        <p>Postal Code: {{hotel.postal_code}}</p>
+        <p>Email: {{hotel.email}}</p>
+        <p>Price: ${{hotel.price}}</p>
+        <button (click)="book(hotel.hotel_id)">Book</button>
+        <hr>
+    </div>
+</div>
