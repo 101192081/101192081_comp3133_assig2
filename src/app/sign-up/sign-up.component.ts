@@ -42,7 +42,7 @@ export class SignUpComponent implements OnInit {
         password: signupForm.value.password,
         email: signupForm.value.email
       }}).subscribe(({ data }) => {
-        sessionStorage.setItem("userID", signupForm.value.userID)
+        sessionStorage.setItem("userID", ""+this.userID)
         sessionStorage.setItem("username", signupForm.value.username)
         sessionStorage.setItem("email", signupForm.value.email)
         this.router.navigate(['/hotel-list'])
